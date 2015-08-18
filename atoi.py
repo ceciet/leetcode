@@ -14,11 +14,11 @@ class Solution:
         for e in str:
             try:
                 n = int(e)
-            except:
+            except e:
                 break
             result = result * 10 +n
         if flag == 1:
-            result = (-1)*result
+            result *= (-1)
         if result > 2147483647:
             return 2147483647
         if result < -2147483648:
