@@ -45,11 +45,3 @@ if __name__ == "__main__":
             for n in [x[0 + 3*i:3 + 3*i] for x in a[3*j:3+3*j]]:
                 num += n
             print num
-    # # a= ["....5..1.",".4.3.....",".....3..1","8......2.","..2.7....",".15......",".....2...",".2.9.....","..4......"]
-    # for i in range(3):
-    #     num = []
-    #     for n in [x[0 + 3*i:3 + 3*i] for x in a[0 + 3*i:3 + 3*i]]:
-    #         num += n
-    #     print num
-    # print s.isValidSudoku(a)
-
