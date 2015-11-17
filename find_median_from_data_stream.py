@@ -1,3 +1,5 @@
+import heapq
+
 class MedianFinder:
     def __init__(self):
         """
@@ -12,24 +14,24 @@ class MedianFinder:
         :type num: int
         :rtype: void
         """
-        self.max_list.append(num)
-        if len(self.max_list) > len(self.min_list):
-            self.min_list.append(self.max_list.pop(0))
+        if len(self.max_list) == len(self.min_list):
+            n = heapq.heappushpop(self.max_list, (-num, num))
+            heapq.heappush(self.min_list, n[1])
+        else:
+            n = heapq.heappushpop(self.min_list, num)
+            heapq.heappush(self.max_list, (-n, n))
 
     def findMedian(self):
         """
         Returns the median of current data stream
         :rtype: float
         """
-        lenA = len(self.min_list)
-        lenB = len(self.max_list)
-        if  lenA == lenB :
-            if lenA == 0:
-                return None
-            else:
-                return float(self.min_list[lenA-1] + self.max_list[0])/2.0
-        else:
-            return float(self.min_list[lenA-1])
+
+        if self.min_list == []:
+            return
+        if len(self.max_list) == len(self.min_list):
+            return (self.max_list[0][1] + self.min_list[0])/2.0
+        return self.min_list[0]
         
 
 # Your MedianFinder object will be instantiated and called as such:
